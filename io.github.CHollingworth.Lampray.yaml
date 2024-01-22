@@ -11,11 +11,8 @@ modules:
     buildsystem: simple
     build-commands:
       - cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=ninja -G Ninja -S ./ -B ./build
-      - cd build && ninja
+      - ninja -C build/
       - cp build/Lampray /app/lampray
-      # - ./build.sh
-      # - file build/Lampray
-      # - ls /app
     sources:
       - type: archive
         url: https://github.com/CHollingworth/Lampray/archive/refs/tags/v1.3.2.tar.gz
