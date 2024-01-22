@@ -1,0 +1,22 @@
+id: io.github.CHollingworth.Lampray.yaml
+runtime: org.freedesktop.Platform
+runtime-version: '23.08'
+sdk: org.freedesktop.Sdk
+command: /app/lampray
+finish-args:
+  - --socket=x11
+  - --filesystem=home
+modules:
+  - name: lampray
+    buildsystem: simple
+    build-commands:
+      - cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=ninja -G Ninja -S ./ -B ./build
+      - cd build && ninja
+      - cp build/Lampray /app/lampray
+      # - ./build.sh
+      # - file build/Lampray
+      # - ls /app
+    sources:
+      - type: archive
+        url: https://github.com/CHollingworth/Lampray/archive/refs/tags/v1.3.2.tar.gz
+        sha256: 2e15a016cd332aec7acbec34fddee405f7a3d591a09f5eec9f40c8f0e4df437d
